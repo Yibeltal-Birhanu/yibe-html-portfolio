@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #050510;
+  --color-foreground: #e8e8ed;
+  --color-accent: #00d4ff;
+  --color-accent-secondary: #7c3aed;
+  --color-accent-glow: #00d4ff33;
+  --color-surface: #0a0a1a;
+  --color-surface-light: #111128;
+  --color-surface-border: #1a1a3a;
+  --color-muted: #6b6b8a;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+  background: #050510;
+  color: #e8e8ed;
+}
+
+body {
+  background: #050510;
+  color: #e8e8ed;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  scroll-snap-type: y proximity;
+}
+
+/* Section snap points */
+.snap-section {
+  scroll-snap-align: start;
+}
+
+/* Selection */
+::selection {
+  background: #00d4ff33;
+  color: #ffffff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050510;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a3a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a4a;
+}
+
+/* ── Glass (NO backdrop-filter — use solid bg instead) ── */
+.glass {
+  background: rgba(12, 12, 30, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-light {
+  background: rgba(14, 14, 34, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Glow */
+.glow-accent {
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.08), 0 0 60px rgba(0, 212, 255, 0.04);
+}
+
+.glow-line {
+  background: linear-gradient(90deg, transparent, #00d4ff, transparent);
+  height: 1px;
+}
+
+/* Grid Background */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Section spacing */
+.section-padding {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
